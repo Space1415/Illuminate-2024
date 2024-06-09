@@ -16,13 +16,10 @@ const Home = () => {
     <SafeAreaView backgroundColor = "white" />
     <View style = {styles.con}>
       <View style = {styles.topBar}>
-        <TouchableOpacity activeOpacity={0.65} onPress = { () => nav.openDrawer()}>
-         <Icon name = "settings" size = {35} color = {colors.coolBlue} />
+        <TouchableOpacity style = {{position:"absolute", left:"0%"}} activeOpacity={0.65} onPress={() => nav.navigate("About")}>
+          <Icon name = "info" size = {30} color = {colors.coolBlue} />
         </TouchableOpacity>
         <Image source={require("../assets/images/Logo.png")} style = {styles.logo} />
-        <TouchableOpacity activeOpacity={0.65} onPress={() => nav.navigate("About", { transition: "fade" })}>
-         <Icon name = "info" size = {35} color = {colors.coolBlue} />
-        </TouchableOpacity>
       </View>
       <CustomText alignSelf={"center"} fontFamily={"Lexend-Medium"} color = {"clear"} fontSize = {16}>
         Click the camera icon to take a picture!
@@ -44,15 +41,16 @@ const styles = StyleSheet.create({
   topBar: {
     flexDirection: "row",
     alignItems:"center",
-    justifyContent: "space-between",
     marginHorizontal: "6%",
     marginTop:"4%",
-    height:"5%"
+    width:"90%",
+    height:"5%",
+    alignSelf:"center",
+    justifyContent:"center",
   },
   logo:{
-    alignSelf:"center",
     transform: [{
       scale:0.3
-    }]
+    }],
   }
 });

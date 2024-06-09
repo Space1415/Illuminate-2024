@@ -4,10 +4,9 @@ import Home from "./src/screens/Home";
 import About from "./src/screens/About";
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import CustomDrawer from './src/screens/CustomDrawer';
+import { createStackNavigator, TransitionPresets} from '@react-navigation/stack';
 
-const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator()
 
 const App = () => {
   useEffect(() => {
@@ -31,12 +30,24 @@ const App = () => {
     return null;
   }
 
+  const transitionConfig = {
+    animation: 'timing',
+    config: {
+      duration: 500, 
+    },
+  };
+
   return (
     <NavigationContainer onReady={onLayoutRootView}>
-      <Drawer.Navigator screenOptions={{headerShown:false}} drawerContent={props => <CustomDrawer {...props} />}>
-        <Drawer.Screen name="Home" component={Home} />
-        <Drawer.Screen name="About" component={About} />
-      </Drawer.Navigator>
+      <Stack.Navigator screenOptions={{headerShown:false, gestureEnabled:false, 
+      ...TransitionPresets.FadeFromBottomAndroid,  
+      transitionSpec: {
+            open: transitionConfig,
+            close: transitionConfig,
+          },}} >
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="About" component={About} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }

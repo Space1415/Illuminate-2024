@@ -6,7 +6,7 @@ import { Icon } from '@rneui/base'
 const TakePicture = () => {
   return (
     <TouchableOpacity style = {styles.con} activeOpacity={0.65}>
-      <Icon style={{alignSelf:"center"}} name = "photo-camera" color = "white" size = {40} />
+      <Icon style={{alignSelf:"center"}} name = "photo-camera" color = {colors.aquaGreen} size = {40} />
     </TouchableOpacity>
   )
 }
